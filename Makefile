@@ -8,4 +8,4 @@ rawMode.o: rawMode.c rawMode.h
 	gcc -c rawMode.c
 
 clean:
-	rm *.o
+	rm *.o output
