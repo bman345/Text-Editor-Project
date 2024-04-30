@@ -1,4 +1,11 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <termios.h>
+#include <ctype.h>
+#include <errno.h>
+#include <stdlib.h>
 #include "rawMode.h"
+#include "input.h"
 
 
 
@@ -6,15 +13,13 @@ int main(){
 
     enableRawMode();
 
-    char input;
-
-    //reads input byte by byte and outputs it, 
-    while(read(STDERR_FILENO, &input, 1) == 1 && input != 'q'){
-        if(iscntrl(input)){
-            printf("%d\n", input);
-        }
-        printf("%d ( '%c' )\n", input, input);
+    //implementation of processing keypresses
+    while(1){
+        textEditorProcessKeypress();
     }
 
+    
     return 0;
 }
+
+
